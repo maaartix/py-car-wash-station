@@ -8,7 +8,7 @@ class Car:
         self.brand = brand
 
 
-class CarWashStation(Car):
+class CarWashStation():
     def __init__(self,
                  distance_from_city_center: float,
                  clean_power: int,
@@ -23,13 +23,13 @@ class CarWashStation(Car):
         income = 0
         for car in cars:
             income += self.wash_single_car(car)
-        return income
+        return round(income, 1)
 
     def calculate_washing_price(self, car: Car) -> float:
         difference = self.clean_power - car.clean_mark
         price = (car.comfort_class * difference * self.average_rating
                  / self.distance_from_city_center)
-        return round(price, 1)
+        return price
 
     def wash_single_car(self, car: Car) -> float:
         price = 0
